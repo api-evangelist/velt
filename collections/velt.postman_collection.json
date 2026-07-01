@@ -1,0 +1,359 @@
+{
+  "info": {
+    "_postman_id": "b7c1f2a4-3d5e-4c8a-9f21-velt00000001",
+    "name": "Velt Data (REST) API",
+    "description": "Server-side REST API for the Velt real-time collaboration platform. HTTPS POST endpoints under https://api.velt.dev/v2 with a top-level `data` object body, authenticated via x-velt-api-key and x-velt-auth-token headers.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "x-velt-api-key", "type": "string" },
+      { "key": "value", "value": "{{veltApiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.velt.dev/v2" },
+    { "key": "veltApiKey", "value": "" },
+    { "key": "veltAuthToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Comments",
+      "description": "Comment threads and annotations.",
+      "item": [
+        {
+          "name": "Get comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comments/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentIds\": [\"<string>\"]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Add comments",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comments/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      { \"text\": \"<string>\", \"from\": { \"userId\": \"<string>\" } }\n    ]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get comment annotations count",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comments/annotations/count/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["comments", "annotations", "count", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentIds\": [\"<string>\"]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "description": "End users and user-group membership.",
+      "item": [
+        {
+          "name": "Add users",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"users\": [\n      { \"userId\": \"<string>\", \"name\": \"<string>\", \"email\": \"<string>\" }\n    ]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get users",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Organizations",
+      "description": "Top-level tenancy boundary.",
+      "item": [
+        {
+          "name": "Add organizations",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizations\": [\n      { \"organizationId\": \"<string>\", \"name\": \"<string>\" }\n    ]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get organizations",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["organizations", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "description": "Documents and folders collaboration attaches to.",
+      "item": [
+        {
+          "name": "Add documents",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/documents/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["documents", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documents\": [\n      { \"documentId\": \"<string>\", \"documentName\": \"<string>\" }\n    ]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get documents",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/documents/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["documents", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentIds\": [\"<string>\"]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "description": "Notifications and inbox/email config.",
+      "item": [
+        {
+          "name": "Get notification config",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/notifications/config/get",
+              "host": ["{{baseUrl}}"],
+              "path": ["notifications", "config", "get"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\"<string>\"],\n    \"getOrganizationConfig\": false\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Add notifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/notifications/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["notifications", "add"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"notifications\": [\n      { \"documentId\": \"<string>\", \"toUserId\": \"<string>\", \"message\": \"<string>\" }\n    ]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "description": "Advanced webhook endpoints and event subscriptions.",
+      "item": [
+        {
+          "name": "Create advanced webhook endpoint",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/endpoints/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "endpoints", "create"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"url\": \"https://example.com/velt-webhook\",\n    \"eventTypes\": [\"comment.newlyAdded\", \"comment.statusChanged\"]\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "description": "Workspace API keys and auth tokens.",
+      "item": [
+        {
+          "name": "Create API key",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/workspace/apikey/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["workspace", "apikey", "create"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {}\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Reset auth token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "x-velt-api-key", "value": "{{veltApiKey}}" },
+              { "key": "x-velt-auth-token", "value": "{{veltAuthToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/workspace/apikey/auth-token/reset",
+              "host": ["{{baseUrl}}"],
+              "path": ["workspace", "apikey", "auth-token", "reset"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {}\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

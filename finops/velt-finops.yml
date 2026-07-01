@@ -1,0 +1,98 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Velt
+providerId: velt
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- Real-Time Collaboration
+- Comments
+- Presence
+- Notifications
+- SDK
+- Webhooks
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Velt spend. Velt bills on Monthly Active Documents (MADs) -
+  documents that see active collaboration in a billing month - rather than per
+  seat, per API call, or per connection. The free Hacker tier covers 100 MADs in
+  development; Growth and Enterprise are contract-based with negotiated MAD
+  volumes plus connection ceilings, storage, SLAs, and hosting/compliance
+  options. Because both the client SDK and the server-side Data (REST) API and
+  webhooks resolve to the same documents, cost is driven by how many documents
+  are actively collaborated on, not by request volume.
+notes: >-
+  MAD volumes and contract terms for Growth and Enterprise are negotiated with
+  Velt sales; verify against the Velt pricing page during reconciliation.
+sources:
+- https://velt.dev/pricing
+- https://velt.dev/docs
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Velt
+serviceCategory: Developer Tools and Collaboration
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Velt
+  ServiceCategory: Developer Tools and Collaboration
+  ProviderName: Velt
+  PublisherName: Velt
+  InvoiceIssuerName: Velt
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: monthly_active_documents
+  description: Documents with active collaboration in a billing month - the primary billing meter.
+  unit: documents
+  aggregation: count
+  dimensions:
+  - account
+  - organization
+- name: simultaneous_connections
+  description: Concurrent real-time client connections, capped by plan tier.
+  unit: connections
+  aggregation: max
+  dimensions:
+  - account
+- name: file_storage
+  description: File storage consumed by collaboration attachments and recordings, by plan.
+  unit: bytes
+  aggregation: max
+  dimensions:
+  - account
+- name: webhook_deliveries
+  description: Webhook event deliveries dispatched to configured endpoints, including retries.
+  unit: deliveries
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+principles:
+- name: Visibility
+  description: Track active documents (MADs) and connection peaks in the Velt admin console against the plan allowance.
+- name: Allocation
+  description: Map organizations and documents in Velt to internal teams/tenants to attribute MAD-driven cost.
+- name: Optimization
+  description: Scope collaboration to documents that genuinely need it and retire stale documents so they stop counting as active.
+- name: Accountability
+  description: Assign owners per organization/workspace; review MAD growth and connection ceilings monthly against contract.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

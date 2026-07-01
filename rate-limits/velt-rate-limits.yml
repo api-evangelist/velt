@@ -1,0 +1,69 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Velt
+providerId: velt
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Real-Time Collaboration
+- Comments
+- Presence
+- Notifications
+- SDK
+- Webhooks
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Velt governs usage primarily through plan-based capacity rather than a
+  published per-endpoint request-per-second limit. The main capacity dimensions
+  are Monthly Active Documents (MADs) and simultaneous real-time connections,
+  both set by tier (20 connections on Hacker, up to 100,000 on Growth, up to
+  200,000 on Enterprise). Data (REST) API calls that accept batches cap list
+  inputs - for example notification config requests accept up to 30 document
+  IDs per call. Webhook deliveries are subject to retry scheduling with
+  exponential backoff and provider-side rate limiting on the delivery path.
+  Specific per-endpoint request-rate values are not reconciled in this artifact.
+notes: >-
+  Confirm any per-endpoint request-rate limits and batch input caps in the Velt
+  documentation during reconciliation. Connection ceilings and MAD quotas are
+  the enforced plan limits; see the plans artifact.
+sources:
+- https://velt.dev/docs/api-reference/rest-apis
+- https://velt.dev/docs/webhooks/advanced
+- https://velt.dev/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Monthly Active Documents (MADs)
+  scope: account
+  metric: documents
+  limit: plan-based (100 on Hacker; contract on Growth / Enterprise)
+  notes: Documents with active collaboration in a billing month; primary capacity meter.
+- name: Simultaneous Connections
+  scope: account
+  metric: connections
+  limit: 20 (Hacker) / up to 100000 (Growth) / up to 200000 (Enterprise)
+  notes: Concurrent real-time client connections allowed by tier.
+- name: Document IDs Per Request
+  scope: request
+  metric: documents
+  limit: 30
+  notes: Batch input cap on endpoints such as notifications config get/set.
+- name: Webhook Delivery Retries
+  scope: account
+  metric: deliveries
+  limit: retry schedule with exponential backoff
+  notes: Failed webhook deliveries are retried on a backoff schedule; provider rate-limits the delivery path.
+policies:
+- name: Plan-Based Capacity
+  description: Capacity scales by tier via MAD volume and connection ceilings rather than fixed per-endpoint RPS.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Webhook Recovery
+  description: Webhook deliveries retry with exponential backoff and provide a recovery path for missed events.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

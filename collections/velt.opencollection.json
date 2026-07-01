@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "x-velt-api-key",
+        "value": "{{veltApiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Comments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get comments", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"documentIds\": [\"<string>\"] } }"
+            }
+          },
+          "docs": "Retrieve comment threads for one or more documents in an organization."
+        },
+        {
+          "info": { "name": "Add comments", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/add",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"documentId\": \"<string>\", \"comments\": [] } }"
+            }
+          },
+          "docs": "Create one or more comment threads on a document."
+        },
+        {
+          "info": { "name": "Get comment annotations count", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/annotations/count/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"documentIds\": [\"<string>\"] } }"
+            }
+          },
+          "docs": "Return the annotation count for one or more documents."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Users", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Add users", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/users/add",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"users\": [] } }"
+            }
+          },
+          "docs": "Add end users to an organization."
+        },
+        {
+          "info": { "name": "Get users", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/users/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\" } }"
+            }
+          },
+          "docs": "List users in an organization."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Organizations", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Add organizations", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/add",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizations\": [] } }"
+            }
+          },
+          "docs": "Create one or more organizations."
+        },
+        {
+          "info": { "name": "Get organizations", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\" } }"
+            }
+          },
+          "docs": "Get organizations."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Documents", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Add documents", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/add",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"documents\": [] } }"
+            }
+          },
+          "docs": "Add documents to an organization."
+        },
+        {
+          "info": { "name": "Get documents", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"documentIds\": [\"<string>\"] } }"
+            }
+          },
+          "docs": "Get documents."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Notifications", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get notification config", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/config/get",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"userId\": \"<string>\", \"documentIds\": [\"<string>\"], \"getOrganizationConfig\": false } }"
+            }
+          },
+          "docs": "Read inbox and email notification config for a user or organization."
+        },
+        {
+          "info": { "name": "Add notifications", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/add",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"notifications\": [] } }"
+            }
+          },
+          "docs": "Create notifications for users."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create advanced webhook endpoint", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/webhooks/endpoints/create",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": { \"organizationId\": \"<string>\", \"url\": \"https://example.com/velt-webhook\", \"eventTypes\": [\"comment.newlyAdded\", \"comment.statusChanged\"] } }"
+            }
+          },
+          "docs": "Register a webhook endpoint and subscribe to collaboration event types."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Auth", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create API key", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/workspace/apikey/create",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": {} }"
+            }
+          },
+          "docs": "Provision a new workspace API key and auth token."
+        },
+        {
+          "info": { "name": "Reset auth token", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/workspace/apikey/auth-token/reset",
+            "body": {
+              "type": "json",
+              "data": "{ \"data\": {} }"
+            }
+          },
+          "docs": "Reset the auth token for a workspace API key."
+        }
+      ]
+    }
+  ]
+}

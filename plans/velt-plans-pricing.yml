@@ -1,0 +1,149 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Velt
+providerId: velt
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- Real-Time Collaboration
+- Comments
+- Presence
+- Notifications
+- SDK
+- Webhooks
+- Plans
+description: >-
+  Velt prices on Monthly Active Documents (MADs) - documents that have active
+  collaboration in a billing month - rather than on seats, monthly active
+  users, or simultaneous connections. A free Hacker tier includes all features
+  in development environments up to 100 MADs; Growth and Enterprise are
+  contract-based with negotiated MAD volumes, higher connection ceilings,
+  storage, SLAs, and hosting/compliance options. The same account governs both
+  the client SDK and the server-side Data (REST) API and webhooks.
+notes: >-
+  MAD tiers and included limits are as published on the Velt pricing page;
+  Growth and Enterprise pricing is custom - contact Velt sales. Verify current
+  limits and features on the pricing page during reconciliation.
+sources:
+- https://velt.dev/pricing
+- https://velt.dev/docs
+plans:
+- id: velt-hacker
+  name: Hacker
+  type: free
+  description: >-
+    Free tier for building and prototyping - all 15+ collaboration features,
+    pre-built components, full customization, and basic webhooks, limited to
+    development environments.
+  entries:
+  - label: Monthly Active Documents
+    name: mad
+    type: quota
+    metric: documents
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Simultaneous Connections
+    name: connections
+    type: quota
+    metric: connections
+    limit: 20
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Team Members
+    name: team_members
+    type: quota
+    metric: seats
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: All Features (15+)
+  - name: Pre-built Components
+  - name: Basic Webhooks
+  - name: Development Environments Only
+- id: velt-growth
+  name: Growth
+  type: enterprise
+  description: >-
+    Contract-based MAD volume with production use, all features, unlimited
+    team members, high connection ceilings, large file storage, Slack support,
+    and a high-uptime SLA.
+  entries:
+  - label: Monthly Active Documents
+    name: mad
+    type: quota
+    metric: documents
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contract-based
+    userMultiplied: false
+  - label: Simultaneous Connections
+    name: connections
+    type: quota
+    metric: connections
+    limit: 100000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contract-based
+    userMultiplied: false
+  elements:
+  - name: All Features (15+)
+  - name: Unlimited Team Members
+  - name: Production Environments
+  - name: File Storage
+  - name: Slack Support
+  - name: Uptime SLA
+- id: velt-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Dedicated server and data storage, highest connection ceilings, data
+    self-hosting with GDPR APIs, enterprise security and compliance (SOC 2
+    Type 2, HIPAA with BAA), multi-region hosting, and a dedicated customer
+    success manager. Contact Velt sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Simultaneous Connections
+    name: connections
+    type: quota
+    metric: connections
+    limit: 200000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contract-based
+    userMultiplied: false
+  elements:
+  - name: Dedicated Server and Storage
+  - name: Data Self-Hosting
+  - name: GDPR APIs
+  - name: SOC 2 Type 2 / HIPAA with BAA
+  - name: Multi-Region Hosting (EU / APAC / NA)
+  - name: Dedicated Customer Success Manager
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
