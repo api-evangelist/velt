@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/velt-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: x-velt-api-key
+  description: Your Velt API key.
+  sources:
+  - openapi/velt-openapi.yml
+- name: authToken
+  type: apiKey
+  in: header
+  parameter: x-velt-auth-token
+  description: Your Velt auth token that authorizes the API key.
+  sources:
+  - openapi/velt-openapi.yml
