@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Auth
+  description: Workspace API keys and auth tokens.
+paths:
+  /workspace/apikey/create:
+    post:
+      operationId: createApiKey
+      tags:
+      - Auth
+      summary: Create API key
+      description: Provision a new API key and its auth token for the workspace.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataEnvelope'
+      responses:
+        '200':
+          description: API key created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /workspace/apikey/get:
+    post:
+      operationId: getApiKeys
+      tags:
+      - Auth
+      summary: Get API keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataEnvelope'
+      responses:
+        '200':
+          description: API keys returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /workspace/apikey/auth-token/reset:
+    post:
+      operationId: resetAuthToken
+      tags:
+      - Auth
+      summary: Reset auth token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataEnvelope'
+      responses:
+        '200':
+          description: Auth token reset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    DataEnvelope:
+      type: object
+      required:
+      - data
+      description: All Velt Data API requests wrap their payload in a top-level `data` object.
+      properties:
+        data:
+          type: object
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

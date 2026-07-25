@@ -1,0 +1,234 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Documents API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Documents
+  description: Documents and folders that collaboration attaches to.
+paths:
+  /folders/add:
+    post:
+      operationId: addFolder
+      tags:
+      - Documents
+      summary: Add folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Folder added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /folders/get:
+    post:
+      operationId: getFolders
+      tags:
+      - Documents
+      summary: Get folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Folders returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /documents/add:
+    post:
+      operationId: addDocuments
+      tags:
+      - Documents
+      summary: Add documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentAddRequest'
+      responses:
+        '200':
+          description: Documents added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /documents/get:
+    post:
+      operationId: getDocuments
+      tags:
+      - Documents
+      summary: Get documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Documents returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /documents/update:
+    post:
+      operationId: updateDocuments
+      tags:
+      - Documents
+      summary: Update documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentAddRequest'
+      responses:
+        '200':
+          description: Documents updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /documents/move:
+    post:
+      operationId: moveDocuments
+      tags:
+      - Documents
+      summary: Move documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Documents moved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /documents/delete:
+    post:
+      operationId: deleteDocuments
+      tags:
+      - Documents
+      summary: Delete documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Documents deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    DocumentScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+              description: Single document identifier.
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document identifiers.
+    DocumentAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - documents
+          properties:
+            organizationId:
+              type: string
+            documents:
+              type: array
+              items:
+                type: object
+                properties:
+                  documentId:
+                    type: string
+                  documentName:
+                    type: string
+                  folderId:
+                    type: string
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

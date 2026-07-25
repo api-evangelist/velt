@@ -1,0 +1,238 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Notifications API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Notifications
+  description: Notifications and inbox/email configuration.
+paths:
+  /notifications/add:
+    post:
+      operationId: addNotifications
+      tags:
+      - Notifications
+      summary: Add notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationAddRequest'
+      responses:
+        '200':
+          description: Notifications added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /notifications/get:
+    post:
+      operationId: getNotifications
+      tags:
+      - Notifications
+      summary: Get notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserScopedRequest'
+      responses:
+        '200':
+          description: Notifications returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /notifications/update:
+    post:
+      operationId: updateNotifications
+      tags:
+      - Notifications
+      summary: Update notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationAddRequest'
+      responses:
+        '200':
+          description: Notifications updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /notifications/delete:
+    post:
+      operationId: deleteNotifications
+      tags:
+      - Notifications
+      summary: Delete notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserScopedRequest'
+      responses:
+        '200':
+          description: Notifications deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /notifications/config/get:
+    post:
+      operationId: getNotificationConfig
+      tags:
+      - Notifications
+      summary: Get notification config
+      description: Read inbox and email notification config for a user (or the organization when getOrganizationConfig is true), optionally scoped to up to 30 documents.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationConfigGetRequest'
+      responses:
+        '200':
+          description: Config returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /notifications/config/set:
+    post:
+      operationId: setNotificationConfig
+      tags:
+      - Notifications
+      summary: Set notification config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationConfigGetRequest'
+      responses:
+        '200':
+          description: Config set.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    UserScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
+    NotificationConfigGetRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document IDs for document-level config.
+            getOrganizationConfig:
+              type: boolean
+              description: Set true to fetch organization-level config instead of user-level.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    NotificationAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - notifications
+          properties:
+            organizationId:
+              type: string
+            notifications:
+              type: array
+              items:
+                type: object
+                properties:
+                  documentId:
+                    type: string
+                  toUserId:
+                    type: string
+                  message:
+                    type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key / auth token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

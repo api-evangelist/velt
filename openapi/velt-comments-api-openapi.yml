@@ -1,0 +1,242 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Comments API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Comments
+  description: Comment threads and annotations rendered by the SDK.
+paths:
+  /comments/add:
+    post:
+      operationId: addComments
+      tags:
+      - Comments
+      summary: Add comments
+      description: Create one or more comment threads on a document.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentAddRequest'
+      responses:
+        '200':
+          description: Comments created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /comments/get:
+    post:
+      operationId: getComments
+      tags:
+      - Comments
+      summary: Get comments
+      description: Retrieve comment threads for one or more documents in an organization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Comments returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /comments/update:
+    post:
+      operationId: updateComments
+      tags:
+      - Comments
+      summary: Update comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentAddRequest'
+      responses:
+        '200':
+          description: Comments updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /comments/delete:
+    post:
+      operationId: deleteComments
+      tags:
+      - Comments
+      summary: Delete comments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Comments deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /comments/annotations/get:
+    post:
+      operationId: getCommentAnnotations
+      tags:
+      - Comments
+      summary: Get comment annotations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Annotations returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /comments/annotations/count/get:
+    post:
+      operationId: getCommentAnnotationsCount
+      tags:
+      - Comments
+      summary: Get comment annotations count
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentScopedRequest'
+      responses:
+        '200':
+          description: Annotation count returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    DocumentScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+              description: Single document identifier.
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document identifiers.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    CommentAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - documentId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+            comments:
+              type: array
+              items:
+                $ref: '#/components/schemas/Comment'
+    UserRef:
+      type: object
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    Comment:
+      type: object
+      properties:
+        commentId:
+          type: string
+        annotationId:
+          type: string
+        text:
+          type: string
+        from:
+          $ref: '#/components/schemas/UserRef'
+        status:
+          type: string
+          example: OPEN
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key / auth token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Webhooks API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Webhooks
+  description: Advanced webhook endpoints and event subscriptions.
+paths:
+  /webhooks/endpoints/create:
+    post:
+      operationId: createWebhookEndpoint
+      tags:
+      - Webhooks
+      summary: Create advanced webhook endpoint
+      description: Register a URL you control and select the collaboration event types to subscribe to. Deliveries are HMAC-signed and retried with exponential backoff.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEndpointRequest'
+      responses:
+        '200':
+          description: Webhook endpoint created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /webhooks/endpoints/get:
+    post:
+      operationId: getWebhookEndpoints
+      tags:
+      - Webhooks
+      summary: Get advanced webhook endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Webhook endpoints returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /webhooks/endpoints/delete:
+    post:
+      operationId: deleteWebhookEndpoint
+      tags:
+      - Webhooks
+      summary: Delete advanced webhook endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEndpointRequest'
+      responses:
+        '200':
+          description: Webhook endpoint deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    WebhookEndpointRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - url
+          properties:
+            organizationId:
+              type: string
+            url:
+              type: string
+              format: uri
+              description: The endpoint URL you control.
+            eventTypes:
+              type: array
+              items:
+                type: string
+              description: Collaboration event types to subscribe to (for example comment newlyAdded and statusChanged actions).
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

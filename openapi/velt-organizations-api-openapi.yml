@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Organizations API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Organizations
+  description: Top-level tenancy boundary.
+paths:
+  /organizations/add:
+    post:
+      operationId: addOrganizations
+      tags:
+      - Organizations
+      summary: Add organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationAddRequest'
+      responses:
+        '200':
+          description: Organizations added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /organizations/get:
+    post:
+      operationId: getOrganizations
+      tags:
+      - Organizations
+      summary: Get organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Organizations returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /organizations/update:
+    post:
+      operationId: updateOrganizations
+      tags:
+      - Organizations
+      summary: Update organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationAddRequest'
+      responses:
+        '200':
+          description: Organizations updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /organizations/delete:
+    post:
+      operationId: deleteOrganizations
+      tags:
+      - Organizations
+      summary: Delete organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Organizations deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    OrganizationAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizations
+          properties:
+            organizations:
+              type: array
+              items:
+                type: object
+                properties:
+                  organizationId:
+                    type: string
+                  name:
+                    type: string
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.

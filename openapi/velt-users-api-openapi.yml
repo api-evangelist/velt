@@ -1,0 +1,198 @@
+openapi: 3.0.3
+info:
+  title: Velt Data (REST) Auth Users API
+  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  termsOfService: https://velt.dev/terms
+  contact:
+    name: Velt Support
+    url: https://velt.dev
+  version: '2.0'
+servers:
+- url: https://api.velt.dev/v2
+  description: Velt Data API v2
+security:
+- apiKeyAuth: []
+  authToken: []
+tags:
+- name: Users
+  description: End users and user-group membership.
+paths:
+  /users/add:
+    post:
+      operationId: addUsers
+      tags:
+      - Users
+      summary: Add users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddRequest'
+      responses:
+        '200':
+          description: Users added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /users/get:
+    post:
+      operationId: getUsers
+      tags:
+      - Users
+      summary: Get users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Users returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /users/update:
+    post:
+      operationId: updateUsers
+      tags:
+      - Users
+      summary: Update users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddRequest'
+      responses:
+        '200':
+          description: Users updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /users/delete:
+    post:
+      operationId: deleteUsers
+      tags:
+      - Users
+      summary: Delete users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Users deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /user-groups/add:
+    post:
+      operationId: addUserGroups
+      tags:
+      - Users
+      summary: Add user groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: User group added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  /user-groups/users/add:
+    post:
+      operationId: addUsersToGroups
+      tags:
+      - Users
+      summary: Add users to groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationScopedRequest'
+      responses:
+        '200':
+          description: Users added to group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+components:
+  schemas:
+    UserRef:
+      type: object
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    UserAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - users
+          properties:
+            organizationId:
+              type: string
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserRef'
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-velt-api-key
+      description: Your Velt API key.
+    authToken:
+      type: apiKey
+      in: header
+      name: x-velt-auth-token
+      description: Your Velt auth token that authorizes the API key.
