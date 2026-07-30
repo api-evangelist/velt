@@ -8,7 +8,20 @@ description: Velt is a real-time collaboration platform delivered primarily as a
   Its server-side surface is the Velt Data (REST) API at api.velt.dev plus signed,
   retried webhooks, letting backends read and write comments, users, organizations,
   folders, documents, notifications, and user groups programmatically.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/velt.png
 tags:
 - Real-Time Collaboration
 - Comments
@@ -20,159 +33,160 @@ created: '2026-07-01'
 modified: '2026-07-01'
 specificationVersion: '0.19'
 apis:
+- aid: velt:velt-auth-api
+  name: Velt Auth API
+  description: Workspace API keys and auth tokens.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/velt-auth-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
 - aid: velt:velt-comments-api
   name: Velt Comments API
+  description: Comment threads and annotations rendered by the SDK.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
   tags:
   - Comments
-  - Annotations
-  - Collaboration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/api-reference/rest-apis
-  baseURL: https://api.velt.dev/v2
   properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
-    type: APIReference
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Server-side CRUD over comment threads and their annotations - add, get,
-    update, and delete comments and comment annotations, and retrieve annotation counts
-    - scoped by organization and document. Comments are the collaboration data the
-    client SDK renders in-app.
-- aid: velt:velt-users-api
-  name: Velt Users API
-  tags:
-  - Users
-  - Identity
-  - Collaboration
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/api-reference/rest-apis
-  baseURL: https://api.velt.dev/v2
-  properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Add, get, update, and delete the end users that participate in collaboration,
-    plus user-group membership operations, so backends can keep Velt identities in
-    sync with the host application's user directory.
-- aid: velt:velt-organizations-api
-  name: Velt Organizations API
-  tags:
-  - Organizations
-  - Tenancy
-  - Access
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/api-reference/rest-apis
-  baseURL: https://api.velt.dev/v2
-  properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Manage organizations - the top-level tenancy boundary in Velt - with
-    add, get, update, delete, and enable/disable operations that partition collaboration
-    data and access across teams and customers.
+  - type: OpenAPI
+    url: openapi/velt-comments-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
 - aid: velt:velt-documents-api
   name: Velt Documents API
+  description: Documents and folders that collaboration attaches to.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
   tags:
   - Documents
-  - Folders
-  - Access Control
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/api-reference/rest-apis
-  baseURL: https://api.velt.dev/v2
   properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Create and manage documents and folders - the addressable surfaces that
-    collaboration is attached to - including add, get, update, move, migrate, delete,
-    access-control, and disabled-state operations.
+  - type: OpenAPI
+    url: openapi/velt-documents-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
 - aid: velt:velt-notifications-api
   name: Velt Notifications API
-  tags:
-  - Notifications
-  - Inbox
-  - Email
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
-  baseURL: https://api.velt.dev/v2
-  properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
-    type: APIReference
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Add, get, update, and delete notifications and read or set per-user
-    and per-organization notification config (inbox and email delivery), driving the
-    notification and inbox components rendered by the SDK.
-- aid: velt:velt-webhooks-api
-  name: Velt Webhooks API
-  tags:
-  - Webhooks
-  - Events
-  - HMAC
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://velt.dev/docs/webhooks/advanced
-  baseURL: https://api.velt.dev/v2
-  properties:
-  - url: https://velt.dev/docs/webhooks/advanced
-    type: Documentation
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Configure advanced webhook endpoints and subscribe to collaboration
-    events (for example newly-added and status-change actions on comments) generated
-    by humans and agents. Deliveries are HMAC-signed, verified via the signature header,
-    and retried with exponential backoff.
-- aid: velt:velt-auth-tokens-api
-  name: Velt Auth Tokens API
-  tags:
-  - Authentication
-  - API Keys
-  - Tokens
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  description: Notifications and inbox/email configuration.
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
+  tags:
+  - Notifications
   properties:
-  - url: https://velt.dev/docs/api-reference/rest-apis
-    type: Documentation
-  - url: openapi/velt-openapi.yml
-    type: OpenAPI
-  - url: collections/velt.postman_collection.json
-    type: PostmanCollection
-  - url: collections/velt.opencollection.json
-    type: OpenCollection
-  description: Workspace-level management of API keys and auth tokens - create, get,
-    and update API keys, read and update API key config, reset auth tokens, and generate
-    the short-lived tokens and signatures that authorize SDK and Data API calls.
+  - type: OpenAPI
+    url: openapi/velt-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
+- aid: velt:velt-organizations-api
+  name: Velt Organizations API
+  description: Top-level tenancy boundary.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/velt-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
+- aid: velt:velt-users-api
+  name: Velt Users API
+  description: End users and user-group membership.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/velt-users-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
+- aid: velt:velt-webhooks-api
+  name: Velt Webhooks API
+  description: Advanced webhook endpoints and event subscriptions.
+  humanURL: https://velt.dev/docs/api-reference/rest-apis
+  baseURL: https://api.velt.dev/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/velt-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://velt.dev/docs/api-reference/rest-apis
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments
+  - type: PostmanCollection
+    url: collections/velt.postman_collection.json
+  - type: OpenCollection
+    url: collections/velt.opencollection.json
+  - type: APIReference
+    url: https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config
+  - type: Documentation
+    url: https://velt.dev/docs/webhooks/advanced
 common:
 - type: AgenticAccess
   url: agentic-access/velt-agentic-access.yml
