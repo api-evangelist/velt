@@ -1,0 +1,26 @@
+{
+  "provider": "velt",
+  "sources": [
+    "velt-auth-api-openapi.yml",
+    "velt-comments-api-openapi.yml",
+    "velt-documents-api-openapi.yml",
+    "velt-notifications-api-openapi.yml",
+    "velt-organizations-api-openapi.yml",
+    "velt-users-api-openapi.yml",
+    "velt-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "velt-auth-api-openapi.yml",
+    "velt-comments-api-openapi.yml",
+    "velt-documents-api-openapi.yml",
+    "velt-notifications-api-openapi.yml",
+    "velt-organizations-api-openapi.yml",
+    "velt-users-api-openapi.yml",
+    "velt-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
