@@ -1,0 +1,697 @@
+{
+  "item": [
+    {
+      "id": "6ec3f886-192a-4758-a862-7e219cf9ec53",
+      "name": "Notifications",
+      "description": {
+        "content": "Notifications and inbox/email configuration.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05266731-7bd4-4ce2-b3f1-5fa7b5920f03",
+          "name": "Add notifications",
+          "request": {
+            "name": "Add notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"notifications\": [\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      },\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58c5ea9c-355d-497c-bd0e-b3bb3ba1c7e6",
+              "name": "Notifications added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"notifications\": [\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      },\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df415205-fb6a-4c0e-975f-c02b86c8e6bb",
+          "name": "Get notifications",
+          "request": {
+            "name": "Get notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5efbb2b-145b-4ad1-a09c-6bc4f95a2af5",
+              "name": "Notifications returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26c9d80c-17e8-44b3-be18-d319b35f5449",
+          "name": "Update notifications",
+          "request": {
+            "name": "Update notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"notifications\": [\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      },\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a67729e-7e39-4616-b088-68d313d9d899",
+              "name": "Notifications updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"notifications\": [\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      },\n      {\n        \"documentId\": \"<string>\",\n        \"toUserId\": \"<string>\",\n        \"message\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a95b0d0b-6438-454c-b7b4-ce31186da692",
+          "name": "Delete notifications",
+          "request": {
+            "name": "Delete notifications",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b0a5e6a-c87c-4b89-9267-1acb5a8b7ab3",
+              "name": "Notifications deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2811b81f-7c7a-440b-b175-efc3c2c6ab92",
+          "name": "Get notification config",
+          "request": {
+            "name": "Get notification config",
+            "description": {
+              "content": "Read inbox and email notification config for a user (or the organization when getOrganizationConfig is true), optionally scoped to up to 30 documents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "config",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"getOrganizationConfig\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1290e11-d38e-4bed-adf0-a4b5c766c80f",
+              "name": "Config returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "config",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"getOrganizationConfig\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53a815cb-d5ee-4612-8903-65c187243855",
+              "name": "Missing or invalid API key / auth token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "config",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"getOrganizationConfig\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18b28d69-5bbc-4213-9730-5216764dbed6",
+          "name": "Set notification config",
+          "request": {
+            "name": "Set notification config",
+            "description": {},
+            "url": {
+              "path": [
+                "notifications",
+                "config",
+                "set"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"getOrganizationConfig\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acda980c-a8c5-4f18-801e-2e3710cbdc6f",
+              "name": "Config set.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "config",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"getOrganizationConfig\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.velt.dev/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-velt-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "df10e1ea-6110-460c-8ab2-64d059384c3a",
+    "name": "Velt Data (REST) Auth Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.\n\nContact Support:\n Name: Velt Support",
+      "type": "text/plain"
+    }
+  }
+}

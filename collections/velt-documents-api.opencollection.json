@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) Auth Documents API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-velt-api-key",
+      "value": "{{x-velt-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/folders/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add folder"
+        },
+        {
+          "info": {
+            "name": "Get folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/folders/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get folders"
+        },
+        {
+          "info": {
+            "name": "Add documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add documents"
+        },
+        {
+          "info": {
+            "name": "Get documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get documents"
+        },
+        {
+          "info": {
+            "name": "Update documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update documents"
+        },
+        {
+          "info": {
+            "name": "Move documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/move",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move documents"
+        },
+        {
+          "info": {
+            "name": "Delete documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/documents/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete documents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

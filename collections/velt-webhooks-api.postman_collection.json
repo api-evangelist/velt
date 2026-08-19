@@ -1,0 +1,352 @@
+{
+  "item": [
+    {
+      "id": "8cc53562-dae4-4e6d-9ca8-cded4291fc82",
+      "name": "Webhooks",
+      "description": {
+        "content": "Advanced webhook endpoints and event subscriptions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08e80fa8-1b46-4573-92ff-3b35010f467d",
+          "name": "Create advanced webhook endpoint",
+          "request": {
+            "name": "Create advanced webhook endpoint",
+            "description": {
+              "content": "Register a URL you control and select the collaboration event types to subscribe to. Deliveries are HMAC-signed and retried with exponential backoff.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"eventTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d817b06-0ffa-4f6b-87b1-1fe13cfee220",
+              "name": "Webhook endpoint created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"eventTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b35fc1eb-18a3-481f-ae9f-1ce381bddf92",
+          "name": "Get advanced webhook endpoints",
+          "request": {
+            "name": "Get advanced webhook endpoints",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ff3d5c3-cfd7-4fda-b1ff-9d887faa8b4e",
+              "name": "Webhook endpoints returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73336275-3a90-479c-8bf4-7b6df83b079e",
+          "name": "Delete advanced webhook endpoint",
+          "request": {
+            "name": "Delete advanced webhook endpoint",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                "endpoints",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"eventTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1bf09bf7-bd41-4ff8-a8d1-02286cb4494e",
+              "name": "Webhook endpoint deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    "endpoints",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"eventTypes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.velt.dev/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-velt-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a03f5d1-dfeb-48f2-8253-6bd3db846c55",
+    "name": "Velt Data (REST) Auth Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.\n\nContact Support:\n Name: Velt Support",
+      "type": "text/plain"
+    }
+  }
+}

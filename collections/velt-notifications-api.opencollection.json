@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) Auth Notifications API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-velt-api-key",
+      "value": "{{x-velt-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add notifications"
+        },
+        {
+          "info": {
+            "name": "Get notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get notifications"
+        },
+        {
+          "info": {
+            "name": "Update notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update notifications"
+        },
+        {
+          "info": {
+            "name": "Delete notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete notifications"
+        },
+        {
+          "info": {
+            "name": "Get notification config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/config/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Read inbox and email notification config for a user (or the organization when getOrganizationConfig is true), optionally scoped to up to 30 documents."
+        },
+        {
+          "info": {
+            "name": "Set notification config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/notifications/config/set",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set notification config"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

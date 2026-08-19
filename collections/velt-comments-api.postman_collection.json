@@ -1,0 +1,753 @@
+{
+  "item": [
+    {
+      "id": "c780c5d0-08ca-475a-8e38-2e269b626c01",
+      "name": "Comments",
+      "description": {
+        "content": "Comment threads and annotations rendered by the SDK.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05578987-0e14-4f85-aa9f-540df20c2f6f",
+          "name": "Add comments",
+          "request": {
+            "name": "Add comments",
+            "description": {
+              "content": "Create one or more comment threads on a document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "comments",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"<string>\"\n      },\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "424e5924-d2bb-4840-9ba9-dd2b96e5e3f2",
+              "name": "Comments created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      },\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0fbd1ce-2991-43c7-a44e-dd2930f1c6d6",
+              "name": "Missing or invalid API key / auth token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      },\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e55a4a-5020-4366-913f-cb3fddd0760b",
+          "name": "Get comments",
+          "request": {
+            "name": "Get comments",
+            "description": {
+              "content": "Retrieve comment threads for one or more documents in an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "comments",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a30f0de4-c3db-4310-94a2-45ad700844b2",
+              "name": "Comments returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "031352c1-8626-4edd-b50f-3d1ee950a026",
+              "name": "Missing or invalid API key / auth token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c540598a-f62a-4835-b485-03c0c8db24f7",
+          "name": "Update comments",
+          "request": {
+            "name": "Update comments",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"<string>\"\n      },\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3768831c-21df-4d06-b610-1d012781d841",
+              "name": "Comments updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"comments\": [\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      },\n      {\n        \"commentId\": \"<string>\",\n        \"annotationId\": \"<string>\",\n        \"text\": \"<string>\",\n        \"from\": {\n          \"userId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"email\": \"<email>\"\n        },\n        \"status\": \"OPEN\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dee54f5e-1057-441f-8bd4-6fdeee1aa0ce",
+          "name": "Delete comments",
+          "request": {
+            "name": "Delete comments",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e26e6e36-3efe-4bb3-86b8-3a861d220394",
+              "name": "Comments deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4154ff3c-c5d9-45b6-a712-b90c0bc5c6b9",
+          "name": "Get comment annotations",
+          "request": {
+            "name": "Get comment annotations",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                "annotations",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c808150-b673-482a-ba64-84b930c7d811",
+              "name": "Annotations returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "annotations",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95f158ad-efc7-4271-a7ea-d939c5725ea9",
+          "name": "Get comment annotations count",
+          "request": {
+            "name": "Get comment annotations count",
+            "description": {},
+            "url": {
+              "path": [
+                "comments",
+                "annotations",
+                "count",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "26b85379-ea81-4da3-b6fe-d0fbdf70ef89",
+              "name": "Annotation count returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "comments",
+                    "annotations",
+                    "count",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-velt-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"organizationId\": \"<string>\",\n    \"documentId\": \"<string>\",\n    \"documentIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.velt.dev/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-velt-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e0b5dce-51b4-47ba-9e22-46db0393a934",
+    "name": "Velt Data (REST) Auth Comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.\n\nContact Support:\n Name: Velt Support",
+      "type": "text/plain"
+    }
+  }
+}

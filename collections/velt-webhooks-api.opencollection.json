@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) Auth Webhooks API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-velt-api-key",
+      "value": "{{x-velt-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create advanced webhook endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/webhooks/endpoints/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a URL you control and select the collaboration event types to subscribe to. Deliveries are HMAC-signed and retried with exponential backoff."
+        },
+        {
+          "info": {
+            "name": "Get advanced webhook endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/webhooks/endpoints/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get advanced webhook endpoints"
+        },
+        {
+          "info": {
+            "name": "Delete advanced webhook endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/webhooks/endpoints/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete advanced webhook endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

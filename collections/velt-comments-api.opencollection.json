@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) Auth Comments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-velt-api-key",
+      "value": "{{x-velt-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more comment threads on a document."
+        },
+        {
+          "info": {
+            "name": "Get comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve comment threads for one or more documents in an organization."
+        },
+        {
+          "info": {
+            "name": "Update comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update comments"
+        },
+        {
+          "info": {
+            "name": "Delete comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete comments"
+        },
+        {
+          "info": {
+            "name": "Get comment annotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/annotations/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get comment annotations"
+        },
+        {
+          "info": {
+            "name": "Get comment annotations count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/comments/annotations/count/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get comment annotations count"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

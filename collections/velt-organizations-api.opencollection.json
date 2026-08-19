@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Velt Data (REST) Auth Organizations API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-velt-api-key",
+      "value": "{{x-velt-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add organizations"
+        },
+        {
+          "info": {
+            "name": "Get organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get organizations"
+        },
+        {
+          "info": {
+            "name": "Update organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update organizations"
+        },
+        {
+          "info": {
+            "name": "Delete organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.velt.dev/v2/organizations/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete organizations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
