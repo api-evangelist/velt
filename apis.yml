@@ -26,6 +26,13 @@ tags:
 - Real-Time Collaboration
 - Comments
 - Presence
+- Notification
+- SDK
+- Webhook
+tags_raw:
+- Real-Time Collaboration
+- Comments
+- Presence
 - Notifications
 - SDK
 - Webhooks
@@ -39,6 +46,8 @@ apis:
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -105,6 +114,8 @@ apis:
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
@@ -127,6 +138,8 @@ apis:
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -149,6 +162,8 @@ apis:
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -171,6 +186,8 @@ apis:
   humanURL: https://velt.dev/docs/api-reference/rest-apis
   baseURL: https://api.velt.dev/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
