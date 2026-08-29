@@ -8,6 +8,18 @@ description: Velt is a real-time collaboration platform delivered primarily as a
   Its server-side surface is the Velt Data (REST) API at api.velt.dev plus signed,
   retried webhooks, letting backends read and write comments, users, organizations,
   folders, documents, notifications, and user groups programmatically.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
