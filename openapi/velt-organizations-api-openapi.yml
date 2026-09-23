@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Velt Data (REST) Auth Organizations API
-  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  title: Velt Data (REST) Organizations API
+  description: Server-side REST API for the Velt real-time collaboration platform.
   termsOfService: https://velt.dev/terms
   contact:
     name: Velt Support
@@ -95,6 +95,31 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
     OrganizationAddRequest:
       type: object
       required:
@@ -114,31 +139,6 @@ components:
                     type: string
                   name:
                     type: string
-    OrganizationScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-              description: Organization identifier.
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey

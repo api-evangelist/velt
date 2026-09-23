@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Velt Data (REST) Auth API
-  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  description: Server-side REST API for the Velt real-time collaboration platform.
   termsOfService: https://velt.dev/terms
   contact:
     name: Velt Support
@@ -77,14 +77,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    DataEnvelope:
-      type: object
-      required:
-      - data
-      description: All Velt Data API requests wrap their payload in a top-level `data` object.
-      properties:
-        data:
-          type: object
     Result:
       type: object
       properties:
@@ -97,6 +89,14 @@ components:
           type: array
           items:
             type: object
+    DataEnvelope:
+      type: object
+      required:
+      - data
+      description: All Velt Data API requests wrap their payload in a top-level `data` object.
+      properties:
+        data:
+          type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey

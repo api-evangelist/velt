@@ -1,13 +1,7 @@
 {
   "provider": "velt",
   "sources": [
-    "velt-auth-api-openapi.yml",
-    "velt-comments-api-openapi.yml",
-    "velt-documents-api-openapi.yml",
-    "velt-notifications-api-openapi.yml",
-    "velt-organizations-api-openapi.yml",
-    "velt-users-api-openapi.yml",
-    "velt-webhooks-api-openapi.yml"
+    "_original/velt-openapi.yml"
   ],
   "outputs": [
     "velt-auth-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "velt-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "velt-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "velt-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

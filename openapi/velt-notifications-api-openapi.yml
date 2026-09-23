@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Velt Data (REST) Auth Notifications API
-  description: 'Server-side REST API for the Velt real-time collaboration platform. Velt is primarily a client SDK (React components and framework wrappers) that renders presence, live cursors, comments, notifications, huddles, recordings, and live selection inside applications. This Data API is the backend surface for that SDK: it lets servers read and write comments, users, organizations, folders, documents, notifications, and user groups, and manage workspace API keys, auth tokens, and webhook endpoints. All endpoints are HTTPS POST calls that take a JSON body wrapped in a top-level `data` object and are authenticated with the `x-velt-api-key` and `x-velt-auth-token` headers.'
+  title: Velt Data (REST) Notifications API
+  description: Server-side REST API for the Velt real-time collaboration platform.
   termsOfService: https://velt.dev/terms
   contact:
     name: Velt Support
@@ -136,64 +136,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    UserScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - userId
-          properties:
-            organizationId:
-              type: string
-            userId:
-              type: string
-    NotificationConfigGetRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - userId
-          properties:
-            organizationId:
-              type: string
-            userId:
-              type: string
-            documentIds:
-              type: array
-              items:
-                type: string
-              description: Up to 30 document IDs for document-level config.
-            getOrganizationConfig:
-              type: boolean
-              description: Set true to fetch organization-level config instead of user-level.
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
     NotificationAddRequest:
       type: object
       required:
@@ -218,6 +160,64 @@ components:
                     type: string
                   message:
                     type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    NotificationConfigGetRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document IDs for document-level config.
+            getOrganizationConfig:
+              type: boolean
+              description: Set true to fetch organization-level config instead of user-level.
+    UserScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.
