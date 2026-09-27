@@ -95,31 +95,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
-    OrganizationScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-              description: Organization identifier.
     OrganizationAddRequest:
       type: object
       required:
@@ -139,6 +114,31 @@ components:
                     type: string
                   name:
                     type: string
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey

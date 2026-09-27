@@ -139,69 +139,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    UserRef:
-      type: object
-      properties:
-        userId:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-    CommentAddRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - documentId
-          properties:
-            organizationId:
-              type: string
-            documentId:
-              type: string
-            comments:
-              type: array
-              items:
-                $ref: '#/components/schemas/Comment'
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    Comment:
-      type: object
-      properties:
-        commentId:
-          type: string
-        annotationId:
-          type: string
-        text:
-          type: string
-        from:
-          $ref: '#/components/schemas/UserRef'
-        status:
-          type: string
-          example: OPEN
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
     DocumentScopedRequest:
       type: object
       required:
@@ -222,6 +159,69 @@ components:
               items:
                 type: string
               description: Up to 30 document identifiers.
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    Comment:
+      type: object
+      properties:
+        commentId:
+          type: string
+        annotationId:
+          type: string
+        text:
+          type: string
+        from:
+          $ref: '#/components/schemas/UserRef'
+        status:
+          type: string
+          example: OPEN
+    CommentAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - documentId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+            comments:
+              type: array
+              items:
+                $ref: '#/components/schemas/Comment'
+    UserRef:
+      type: object
+      properties:
+        userId:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.

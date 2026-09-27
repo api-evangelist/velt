@@ -77,6 +77,14 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
+    DataEnvelope:
+      type: object
+      required:
+      - data
+      description: All Velt Data API requests wrap their payload in a top-level `data` object.
+      properties:
+        data:
+          type: object
     Result:
       type: object
       properties:
@@ -89,14 +97,6 @@ components:
           type: array
           items:
             type: object
-    DataEnvelope:
-      type: object
-      required:
-      - data
-      description: All Velt Data API requests wrap their payload in a top-level `data` object.
-      properties:
-        data:
-          type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey

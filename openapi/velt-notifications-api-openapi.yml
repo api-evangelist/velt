@@ -136,7 +136,7 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    NotificationAddRequest:
+    UserScopedRequest:
       type: object
       required:
       - data
@@ -145,21 +145,12 @@ components:
           type: object
           required:
           - organizationId
-          - notifications
+          - userId
           properties:
             organizationId:
               type: string
-            notifications:
-              type: array
-              items:
-                type: object
-                properties:
-                  documentId:
-                    type: string
-                  toUserId:
-                    type: string
-                  message:
-                    type: string
+            userId:
+              type: string
     Error:
       type: object
       properties:
@@ -191,21 +182,6 @@ components:
             getOrganizationConfig:
               type: boolean
               description: Set true to fetch organization-level config instead of user-level.
-    UserScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - userId
-          properties:
-            organizationId:
-              type: string
-            userId:
-              type: string
     Result:
       type: object
       properties:
@@ -218,6 +194,30 @@ components:
           type: array
           items:
             type: object
+    NotificationAddRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - notifications
+          properties:
+            organizationId:
+              type: string
+            notifications:
+              type: array
+              items:
+                type: object
+                properties:
+                  documentId:
+                    type: string
+                  toUserId:
+                    type: string
+                  message:
+                    type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.

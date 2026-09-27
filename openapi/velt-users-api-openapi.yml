@@ -133,18 +133,19 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    Result:
+    OrganizationScopedRequest:
       type: object
+      required:
+      - data
       properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
         data:
-          type: array
-          items:
-            type: object
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
     UserAddRequest:
       type: object
       required:
@@ -172,19 +173,18 @@ components:
         email:
           type: string
           format: email
-    OrganizationScopedRequest:
+    Result:
       type: object
-      required:
-      - data
       properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
         data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-              description: Organization identifier.
+          type: array
+          items:
+            type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey

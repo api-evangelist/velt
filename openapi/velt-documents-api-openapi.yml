@@ -152,6 +152,39 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
+    DocumentScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+              description: Single document identifier.
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document identifiers.
+    OrganizationScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+              description: Organization identifier.
     DocumentAddRequest:
       type: object
       required:
@@ -176,26 +209,6 @@ components:
                     type: string
                   folderId:
                     type: string
-    DocumentScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-            documentId:
-              type: string
-              description: Single document identifier.
-            documentIds:
-              type: array
-              items:
-                type: string
-              description: Up to 30 document identifiers.
     Result:
       type: object
       properties:
@@ -208,19 +221,6 @@ components:
           type: array
           items:
             type: object
-    OrganizationScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-              description: Organization identifier.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
