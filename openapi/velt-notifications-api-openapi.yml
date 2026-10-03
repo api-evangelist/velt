@@ -136,21 +136,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    UserScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - userId
-          properties:
-            organizationId:
-              type: string
-            userId:
-              type: string
     Error:
       type: object
       properties:
@@ -182,6 +167,21 @@ components:
             getOrganizationConfig:
               type: boolean
               description: Set true to fetch organization-level config instead of user-level.
+    UserScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
     Result:
       type: object
       properties:

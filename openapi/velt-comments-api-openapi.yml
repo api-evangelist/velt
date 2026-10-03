@@ -139,26 +139,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    DocumentScopedRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          properties:
-            organizationId:
-              type: string
-            documentId:
-              type: string
-              description: Single document identifier.
-            documentIds:
-              type: array
-              items:
-                type: string
-              description: Up to 30 document identifiers.
     Error:
       type: object
       properties:
@@ -179,20 +159,6 @@ components:
           type: array
           items:
             type: object
-    Comment:
-      type: object
-      properties:
-        commentId:
-          type: string
-        annotationId:
-          type: string
-        text:
-          type: string
-        from:
-          $ref: '#/components/schemas/UserRef'
-        status:
-          type: string
-          example: OPEN
     CommentAddRequest:
       type: object
       required:
@@ -212,6 +178,26 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Comment'
+    DocumentScopedRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          properties:
+            organizationId:
+              type: string
+            documentId:
+              type: string
+              description: Single document identifier.
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document identifiers.
     UserRef:
       type: object
       properties:
@@ -222,6 +208,20 @@ components:
         email:
           type: string
           format: email
+    Comment:
+      type: object
+      properties:
+        commentId:
+          type: string
+        annotationId:
+          type: string
+        text:
+          type: string
+        from:
+          $ref: '#/components/schemas/UserRef'
+        status:
+          type: string
+          example: OPEN
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.
