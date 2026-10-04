@@ -218,6 +218,9 @@ apis:
   - type: Documentation
     url: https://velt.dev/docs/webhooks/advanced
 common:
+- type: CapabilityMap
+  url: capabilities/velt-capability-edges.yml
+  name: Velt Business Capability Map
 - type: AgenticAccess
   url: agentic-access/velt-agentic-access.yml
 - type: TrustCenter

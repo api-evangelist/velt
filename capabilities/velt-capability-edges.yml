@@ -1,0 +1,36 @@
+slug: velt
+provider: Velt
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Webhooks
+  spec_file: velt-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.82
+  evidence: POST /webhooks/endpoints/create  createWebhookEndpoint  Create advanced webhook endpoint;
+    schema WebhookEndpointRequest
+  reason: The operations manage the lifecycle of outbound webhook endpoints for a platform that ships
+    'signed, retried webhooks', which is precisely Webhook & Event Subscription Management within the
+    developer platform/API ecosystem capability.
+- tag: Auth
+  spec_file: velt-auth-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: POST /workspace/apikey/create  createApiKey  Create API key; POST /workspace/apikey/auth-token/reset  resetAuthToken  Reset
+    auth token
+  reason: Issuance, listing and rotation of API keys/auth tokens for developers integrating with the Velt
+    platform — developer credential stewardship rather than enterprise workforce IAM.
