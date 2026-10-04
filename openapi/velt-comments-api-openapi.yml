@@ -139,26 +139,6 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
     CommentAddRequest:
       type: object
       required:
@@ -178,6 +158,40 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Comment'
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+    Comment:
+      type: object
+      properties:
+        commentId:
+          type: string
+        annotationId:
+          type: string
+        text:
+          type: string
+        from:
+          $ref: '#/components/schemas/UserRef'
+        status:
+          type: string
+          example: OPEN
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     DocumentScopedRequest:
       type: object
       required:
@@ -208,20 +222,6 @@ components:
         email:
           type: string
           format: email
-    Comment:
-      type: object
-      properties:
-        commentId:
-          type: string
-        annotationId:
-          type: string
-        text:
-          type: string
-        from:
-          $ref: '#/components/schemas/UserRef'
-        status:
-          type: string
-          example: OPEN
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.

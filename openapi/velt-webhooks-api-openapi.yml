@@ -77,6 +77,28 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
+    WebhookEndpointRequest:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - organizationId
+          - url
+          properties:
+            organizationId:
+              type: string
+            url:
+              type: string
+              format: uri
+              description: The endpoint URL you control.
+            eventTypes:
+              type: array
+              items:
+                type: string
+              description: Collaboration event types to subscribe to (for example comment newlyAdded and statusChanged actions).
     OrganizationScopedRequest:
       type: object
       required:
@@ -102,28 +124,6 @@ components:
           type: array
           items:
             type: object
-    WebhookEndpointRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - url
-          properties:
-            organizationId:
-              type: string
-            url:
-              type: string
-              format: uri
-              description: The endpoint URL you control.
-            eventTypes:
-              type: array
-              items:
-                type: string
-              description: Collaboration event types to subscribe to (for example comment newlyAdded and statusChanged actions).
   securitySchemes:
     apiKeyAuth:
       type: apiKey
