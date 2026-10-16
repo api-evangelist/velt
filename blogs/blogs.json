@@ -4,14 +4,12 @@
     {
       "source": "https://velt.dev/blog",
       "feed_url": "https://velt.dev/blog",
-      "title": "Velt Blog",
+      "title": "",
       "saved": 0,
-      "error": "parse_failed",
-      "nature": "vendor-blog",
-      "nature_basis": "path_blog"
+      "method": "none"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 25,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
