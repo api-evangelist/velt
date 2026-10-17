@@ -151,6 +151,14 @@ components:
               type: string
             userId:
               type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        message:
+          type: string
     Result:
       type: object
       properties:
@@ -163,14 +171,29 @@ components:
           type: array
           items:
             type: object
-    Error:
+    NotificationConfigGetRequest:
       type: object
+      required:
+      - data
       properties:
-        status:
-          type: string
-          example: error
-        message:
-          type: string
+        data:
+          type: object
+          required:
+          - organizationId
+          - userId
+          properties:
+            organizationId:
+              type: string
+            userId:
+              type: string
+            documentIds:
+              type: array
+              items:
+                type: string
+              description: Up to 30 document IDs for document-level config.
+            getOrganizationConfig:
+              type: boolean
+              description: Set true to fetch organization-level config instead of user-level.
     NotificationAddRequest:
       type: object
       required:
@@ -195,29 +218,6 @@ components:
                     type: string
                   message:
                     type: string
-    NotificationConfigGetRequest:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: object
-          required:
-          - organizationId
-          - userId
-          properties:
-            organizationId:
-              type: string
-            userId:
-              type: string
-            documentIds:
-              type: array
-              items:
-                type: string
-              description: Up to 30 document IDs for document-level config.
-            getOrganizationConfig:
-              type: boolean
-              description: Set true to fetch organization-level config instead of user-level.
   responses:
     Unauthorized:
       description: Missing or invalid API key / auth token.

@@ -99,6 +99,18 @@ components:
               items:
                 type: string
               description: Collaboration event types to subscribe to (for example comment newlyAdded and statusChanged actions).
+    Result:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
     OrganizationScopedRequest:
       type: object
       required:
@@ -112,18 +124,6 @@ components:
             organizationId:
               type: string
               description: Organization identifier.
-    Result:
-      type: object
-      properties:
-        status:
-          type: string
-          example: success
-        message:
-          type: string
-        data:
-          type: array
-          items:
-            type: object
   securitySchemes:
     apiKeyAuth:
       type: apiKey
