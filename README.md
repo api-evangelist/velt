@@ -1,4 +1,4 @@
-# Velt (velt)
+# Velt
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,177 +66,129 @@
 
 Velt is a real-time collaboration platform delivered primarily as a client SDK (React components and framework wrappers) for adding presence, live cursors, comments, notifications, huddles, recordings, and live selection to applications. Its server-side surface is the Velt Data (REST) API at api.velt.dev plus signed, retried webhooks, letting backends read and write comments, users, organizations, folders, documents, notifications, and user groups programmatically.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/velt/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/velt/refs/heads/main/apis.yml)
+**Areas:** Real-Time Collaboration · Comments · Presence · Notification · SDK · Webhook
 
-## Tags
+## Velt on APIs.io
 
-- Real-Time Collaboration
-- Comments
-- Presence
-- Notifications
-- SDK
-- Webhooks
+Everything profiled for Velt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/velt/](https://apis.io/providers/velt/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [Velt Auth API](https://apis.io/apis/velt/velt-auth-api/) — Workspace API keys and auth tokens.
+- [Velt Comments API](https://apis.io/apis/velt/velt-comments-api/) — Comment threads and annotations rendered by the SDK.
+- [Velt Documents API](https://apis.io/apis/velt/velt-documents-api/) — Documents and folders that collaboration attaches to.
+- [Velt Notifications API](https://apis.io/apis/velt/velt-notifications-api/) — Notifications and inbox/email configuration.
+- [Velt Organizations API](https://apis.io/apis/velt/velt-organizations-api/) — Top-level tenancy boundary.
+- [Velt Users API](https://apis.io/apis/velt/velt-users-api/) — End users and user-group membership.
+- [Velt Webhooks API](https://apis.io/apis/velt/velt-webhooks-api/) — Advanced webhook endpoints and event subscriptions.
 
-## APIs
+### Published properties
 
-### Velt Comments API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Server-side CRUD over comment threads and their annotations - add, get, update, and delete comments and comment annotations, and retrieve annotation counts - scoped by organization and document. Comments are the collaboration data the client SDK renders in-app.
+#### Agentic access (1)
 
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis](https://velt.dev/docs/api-reference/rest-apis)
-- **Base URL:** `https://api.velt.dev/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Velt Agentic Access](https://apis.io/agentic-access/velt/velt-agentic-access/)
 
-- Comments
-- Annotations
-- Collaboration
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [API Reference](https://velt.dev/docs/api-reference/rest-apis/v2/comments/get-comments)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Velt Data (REST) API](https://apis.io/collections/velt/open-velt/)
+- [Velt Data (REST) Auth API](https://apis.io/collections/velt/open-velt-auth-api/)
+- [Velt Data (REST) Auth Comments API](https://apis.io/collections/velt/open-velt-comments-api/)
+- [Velt Data (REST) Auth Documents API](https://apis.io/collections/velt/open-velt-documents-api/)
+- [Velt Data (REST) Auth Notifications API](https://apis.io/collections/velt/open-velt-notifications-api/)
+- [Velt Data (REST) Auth Organizations API](https://apis.io/collections/velt/open-velt-organizations-api/)
+- [Velt Data (REST) Auth Users API](https://apis.io/collections/velt/open-velt-users-api/)
+- [Velt Data (REST) Auth Webhooks API](https://apis.io/collections/velt/open-velt-webhooks-api/)
 
-### Velt Users API
+#### Security (3)
 
-Add, get, update, and delete the end users that participate in collaboration, plus user-group membership operations, so backends can keep Velt identities in sync with the host application's user directory.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis](https://velt.dev/docs/api-reference/rest-apis)
-- **Base URL:** `https://api.velt.dev/v2`
+- [Velt Authentication](https://apis.io/security/velt/velt-authentication/)
+- [Velt Domain Security](https://apis.io/security/velt/velt-domain-security/)
+- [Velt Trust Center](https://apis.io/security/velt/velt-trust-center/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Users
-- Identity
-- Collaboration
+Published plans, tiers and prices.
 
-#### Properties
+- [Velt Plans Pricing](https://apis.io/plans/velt/velt-plans-pricing/)
 
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Velt Organizations API
+Published request limits.
 
-Manage organizations - the top-level tenancy boundary in Velt - with add, get, update, delete, and enable/disable operations that partition collaboration data and access across teams and customers.
+- [Velt Rate Limits](https://apis.io/rate-limits/velt/velt-rate-limits/)
 
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis](https://velt.dev/docs/api-reference/rest-apis)
-- **Base URL:** `https://api.velt.dev/v2`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Organizations
-- Tenancy
-- Access
+- [Velt Finops](https://apis.io/finops/velt/velt-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Velt Documents API
-
-Create and manage documents and folders - the addressable surfaces that collaboration is attached to - including add, get, update, move, migrate, delete, access-control, and disabled-state operations.
-
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis](https://velt.dev/docs/api-reference/rest-apis)
-- **Base URL:** `https://api.velt.dev/v2`
-
-#### Tags
-
-- Documents
-- Folders
-- Access Control
-
-#### Properties
-
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Velt Notifications API
-
-Add, get, update, and delete notifications and read or set per-user and per-organization notification config (inbox and email delivery), driving the notification and inbox components rendered by the SDK.
-
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config](https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config)
-- **Base URL:** `https://api.velt.dev/v2`
-
-#### Tags
-
-- Notifications
-- Inbox
-- Email
-
-#### Properties
-
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [API Reference](https://velt.dev/docs/api-reference/rest-apis/v2/notifications/get-config)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Velt Webhooks API
-
-Configure advanced webhook endpoints and subscribe to collaboration events (for example newly-added and status-change actions on comments) generated by humans and agents. Deliveries are HMAC-signed, verified via the signature header, and retried with exponential backoff.
-
-- **Human URL:** [https://velt.dev/docs/webhooks/advanced](https://velt.dev/docs/webhooks/advanced)
-- **Base URL:** `https://api.velt.dev/v2`
-
-#### Tags
-
-- Webhooks
-- Events
-- HMAC
-
-#### Properties
-
-- [Documentation](https://velt.dev/docs/webhooks/advanced)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Velt Auth Tokens API
-
-Workspace-level management of API keys and auth tokens - create, get, and update API keys, read and update API key config, reset auth tokens, and generate the short-lived tokens and signatures that authorize SDK and Data API calls.
-
-- **Human URL:** [https://velt.dev/docs/api-reference/rest-apis](https://velt.dev/docs/api-reference/rest-apis)
-- **Base URL:** `https://api.velt.dev/v2`
-
-#### Tags
-
-- Authentication
-- API Keys
-- Tokens
-
-#### Properties
-
-- [Documentation](https://velt.dev/docs/api-reference/rest-apis)
-- [OpenAPI](openapi/velt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/velt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/velt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/veltdev)
-- [LinkedIn](https://www.linkedin.com/company/velt-dev)
 - [Website](https://velt.dev/)
 - [Documentation](https://velt.dev/docs)
-- [Plans](plans/velt-plans-pricing.yml)
-- [Rate Limits](rate-limits/velt-rate-limits.yml)
-- [Fin Ops](finops/velt-finops.yml)
+- [Blog](https://velt.dev/blog)
+- [GitHub](https://github.com/veltdev)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 15.8 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/velt/](https://apis.io/providers/velt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Velt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/velt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
